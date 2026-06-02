@@ -1,6 +1,7 @@
 # Root .gitignore for Pursuit of Hiring fullstack project
 
 # Frontend dependencies and builds
+build/
 frontend/node_modules/
 frontend/build/
 frontend/.pnp
