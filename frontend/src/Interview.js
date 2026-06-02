@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-const BACKEND_URL = 'pursuitofhiring.up.railway.app';
+const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://127.0.0.1:8000'
+  : 'https://pursuitofhiring.up.railway.app';
 
 function Interview({ data, onFinish }) {
   const { jobRole, questions, resumeText } = data;

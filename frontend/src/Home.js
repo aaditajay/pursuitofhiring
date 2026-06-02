@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 
-const BACKEND_URL = "pursuitofhiring.up.railway.app";
+const BACKEND_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://127.0.0.1:8000'
+  : 'https://pursuitofhiring.up.railway.app';
 
 export default function Home({ onStart }) {
   const [jobRole, setJobRole] = useState("");
