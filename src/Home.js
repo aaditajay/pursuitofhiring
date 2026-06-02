@@ -17,8 +17,18 @@ export default function Home({ onStart }) {
       const formData = new FormData();
       formData.append("job_role", jobRole);
       formData.append("resume", resume);
-      const res = await fetch(`${BACKEND_URL}/api/start`, { method: "POST", body: formData });
-      const data = await res.json();
+      const res = await fetch(`${BACKEND_URL}/api/start`, {
+  method: "POST",
+  body: formData
+});
+
+if (!res.ok) {
+  const text = await res.text();
+  throw new Error(`HTTP ${res.status}: ${text}`);
+}
+
+const data = await res.json();
+console.log("Backend response:", data);
       if (data.error) throw new Error(data.error);
       onStart({ jobRole, questions: data.questions, resumeText: data.resume_text });
     } catch (err) {
